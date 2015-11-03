@@ -19,6 +19,7 @@
 #import <ifaddrs.h>
 #import <SystemConfiguration/SCNetworkReachability.h>
 #include <netdb.h>
+#import "UIDevice-Hardware.h"
 
 
 @interface ViewController ()
@@ -235,6 +236,32 @@
     //NSLog(@"-- serialNumber: %@", [AADeviceInfo serialNumber]);
 }
 
+- (void) getIphoneDeviceInfo {
+    UIDevice *device = [UIDevice currentDevice];
+    //平台型号
+    NSLog(@"平台型号:%@",[device platformString]);
+    //cpu型号
+    NSLog(@"cpu型号:%@",[device cpuType]);
+    //cpu频率
+    NSLog(@"cpu频率:%@",[device cpuFrequency]);
+    //cpu核数
+    NSLog(@"%@",[NSString stringWithFormat:@"cpu核数:%u",[device cpuCount]]);
+    //cpu使用率
+    NSLog(@"%@",[NSString stringWithFormat:@"cpu使用率:%@",[device cpuUsage]]);
+    //手机总内存
+    NSLog(@"%@",[NSString stringWithFormat:@"手机总内存:%u",[device totalMemoryBytes] / (1024)]);
+    //可用内存
+    NSLog(@"%@",[NSString stringWithFormat:@"手机可用内存:%u",[device freeMemoryBytes] / (1024)]);
+    //磁盘总空间
+    NSLog(@"%@",[NSString stringWithFormat:@"手机磁盘总空间:%lld",[device totalDiskSpaceBytes] / (1024)]);
+    //可用硬盘空间
+    NSLog(@"%@",[NSString stringWithFormat:@"手机可用硬盘空间:%lld",[device freeDiskSpaceBytes] / (1024)]);
+    //是否支持蓝牙
+    NSLog(@"%@",[NSString stringWithFormat:@"手机是否支持蓝牙:%hhd",[device bluetoothCheck]]);
+    //手机是否越狱
+    NSLog(@"%@",[NSString stringWithFormat:@"手机是否越狱:%hhd",[device isJailBreak]]);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -249,6 +276,8 @@
     NSLog(@"手机类型:%@",deviceName);
     
     [self defaultGateWay];
+    
+    [self getIphoneDeviceInfo];
 }
 
 - (void)didReceiveMemoryWarning {
