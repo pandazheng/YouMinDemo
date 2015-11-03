@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A4248D5A1BE8A305001FB661 /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = A4248D591BE8A305001FB661 /* UIDevice-Hardware.m */; };
+		A4248D5E1BE8B368001FB661 /* getgateway.c in Sources */ = {isa = PBXBuildFile; fileRef = A4248D5B1BE8B368001FB661 /* getgateway.c */; };
 		A47075421BE6647E0027CC1B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A47075411BE6647E0027CC1B /* main.m */; };
 		A47075451BE6647E0027CC1B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A47075441BE6647E0027CC1B /* AppDelegate.m */; };
 		A47075481BE6647E0027CC1B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A47075471BE6647E0027CC1B /* ViewController.m */; };
@@ -19,6 +20,9 @@
 /* Begin PBXFileReference section */
 		A4248D581BE8A305001FB661 /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
 		A4248D591BE8A305001FB661 /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
+		A4248D5B1BE8B368001FB661 /* getgateway.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = getgateway.c; sourceTree = "<group>"; };
+		A4248D5C1BE8B368001FB661 /* getgateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getgateway.h; sourceTree = "<group>"; };
+		A4248D5D1BE8B368001FB661 /* route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = route.h; sourceTree = "<group>"; };
 		A470753D1BE6647D0027CC1B /* YouMinDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouMinDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47075411BE6647E0027CC1B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A47075431BE6647E0027CC1B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,6 +71,9 @@
 				A47075471BE6647E0027CC1B /* ViewController.m */,
 				A4248D581BE8A305001FB661 /* UIDevice-Hardware.h */,
 				A4248D591BE8A305001FB661 /* UIDevice-Hardware.m */,
+				A4248D5B1BE8B368001FB661 /* getgateway.c */,
+				A4248D5C1BE8B368001FB661 /* getgateway.h */,
+				A4248D5D1BE8B368001FB661 /* route.h */,
 				A47075491BE6647F0027CC1B /* Main.storyboard */,
 				A470754C1BE6647F0027CC1B /* Assets.xcassets */,
 				A470754E1BE6647F0027CC1B /* LaunchScreen.storyboard */,
@@ -156,6 +163,7 @@
 			files = (
 				A47075481BE6647E0027CC1B /* ViewController.m in Sources */,
 				A47075451BE6647E0027CC1B /* AppDelegate.m in Sources */,
+				A4248D5E1BE8B368001FB661 /* getgateway.c in Sources */,
 				A47075421BE6647E0027CC1B /* main.m in Sources */,
 				A4248D5A1BE8A305001FB661 /* UIDevice-Hardware.m in Sources */,
 			);

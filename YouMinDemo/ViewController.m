@@ -22,6 +22,8 @@
 #import <SystemConfiguration/SCNetworkReachability.h>
 #include <netdb.h>
 #import "UIDevice-Hardware.h"
+#import "getgateway.h"
+#import "route.h"
 
 
 @interface ViewController ()
@@ -190,8 +192,17 @@
 }
 
 - (void) defaultGateWay {
+    NSString *vlcGateWay;
     NSString *routerIp = [self routerIp];
     NSLog(@"local device ip address:%@",routerIp);
+    
+    in_addr_t i =inet_addr([routerIp cStringUsingEncoding:NSUTF8StringEncoding]);
+    in_addr_t* x =&i;
+    char * r= getdefaultgateway(x);
+    
+    //char*转换为NSString
+    vlcGateWay = [[NSString alloc] initWithFormat:@"%s",r];
+    NSLog(@"gateway: %@",vlcGateWay);
 }
 
 - (NSString *) serialNumber {
