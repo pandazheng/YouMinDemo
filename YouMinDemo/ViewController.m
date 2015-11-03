@@ -24,6 +24,8 @@
 #import "UIDevice-Hardware.h"
 #import "getgateway.h"
 #import "route.h"
+#import <CoreTelephony/CTCarrier.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
 
 
 @interface ViewController ()
@@ -69,7 +71,13 @@
     NSLog(@"当前应用版本号码:%@",appCurVersionNum);
     
     CGRect rect = [[UIScreen mainScreen] bounds];
-    NSLog(@"rect.size.width = %f,rect.size.height = %f",rect.size.width,rect.size.height);
+    NSLog(@"手机屏幕大小:rect.size.width = %f,rect.size.height = %f",rect.size.width,rect.size.height);
+    
+    CTTelephonyNetworkInfo *info = [[CTTelephonyNetworkInfo alloc] init];
+    CTCarrier *carrier = [info subscriberCellularProvider];
+    NSLog(@"%@",[NSString stringWithFormat:@"手机运营商的信息:%@",[carrier carrierName]]);
+    
+    NSLog(@"%@",[NSString stringWithFormat:@"手机当前网络类型:%@",info.currentRadioAccessTechnology]);
 }
 
 - (NSString *) getMachine {
@@ -417,6 +425,20 @@
     return [outstring uppercaseString];
 }
 
+- (int) getSignalLevel {
+    void *libHandle = dlopen("/System/Library/Frameworks/CoreTelephony.framework/CoreTelephony",RTLD_LAZY);//获取库句柄
+    int (*CTGetSignalStrength)(); //定义一个与将要获取的函数匹配的函数指针
+    CTGetSignalStrength = (int(*)())dlsym(libHandle,"CTGetSignalStrength"); //获取指定名称的函数
+    
+    if(CTGetSignalStrength == NULL)
+        return -1;
+    else{
+        int level = CTGetSignalStrength();
+        dlclose(libHandle); //切记关闭库
+        return level;
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -439,6 +461,8 @@
     
     NSString *macaddress = [self macaddress];
     NSLog(@"手机的MAC地址:%@",macaddress);
+    
+    NSLog(@"手机信号量:%d",[self getSignalLevel]);
 }
 
 - (void)didReceiveMemoryWarning {
